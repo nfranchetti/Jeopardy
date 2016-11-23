@@ -4,3 +4,7 @@ The dataset I have is enough for now.
 Some potential bonuses:
 Use scraped data from 2012-2016 as "new" data to test the model on.
 Do something with contestant stats/demographics to predict success.
+
+
+Plot count of questions per date
+Word counts
