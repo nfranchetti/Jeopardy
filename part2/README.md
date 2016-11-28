@@ -3,7 +3,7 @@
 ### Articulate “Specific aim”
 The end goal of this project is to perform text-based clustering on ~217,000 Jeopardy questions and answers, in order to break them down into more broadly defined "categories", rather than the hundreds of individual categories given on the show. I think my clusters will be roughly equivalent to school subjects, or university departments (ie: Biology, Chemistry, Literature, History, etc.).
 
-I've taken some inspiration for this project from [this talk](https://vimeo.com/29001512) by former Jeopardy! champion Roger Craig, a data scientist who used clustering to create a web app to help himself prepare for Jeopardy!, and then became hugely successful on the show, including setting the single game record for most money won.
+I've taken some inspiration for this project from [this talk](https://vimeo.com/29001512) by former Jeopardy champion Roger Craig, a data scientist who used clustering to create a web app to help himself prepare for Jeopardy, and then became hugely successful on the show, including setting the single game record for most money won.
 
 
 ### Outline proposed methods and models
