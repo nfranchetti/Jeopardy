@@ -8,3 +8,13 @@ Do something with contestant stats/demographics to predict success.
 
 Plot count of questions per date
 Word counts
+
+
+
+Evaluating clusters:
+sklearn.manifold.TSNE
+silhouette score
+
+
+spacy NLP library
+
