@@ -16,3 +16,7 @@ Thumbs.db
 
 #Large datasets
 data/JEOPARDY_QUESTIONS1.json
+
+#Pickles
+*.pkl
+*.npy
