@@ -35,10 +35,30 @@ def tokenize_only(text):
             filtered_tokens.append(token)
     return filtered_tokens
 
+def create_clean_columns(df):    
+    df['clean_question'] = df['Question'].apply(cleanhtml)
+    df['clean_answer'] = df['Answer'].apply(cleanhtml)
+    df['clean_category'] = df['Category'].apply(cleanhtml)
+    df['everything'] = df['clean_question']+' '+df['clean_answer']+' '+df['clean_category']
+    return df
+
+def cleanhtml(raw_html):
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    cleantext = cleantext.replace('\n', '')
+    cleantext = cleantext.replace('-', ' ')
+#     cleantext = cleantext.translate(None, string.punctuation)
+#     cleantext = cleantext.replace('\'', '')
+    regex = re.compile('[%s]' % re.escape(string.punctuation))
+    cleantext = regex.sub('', cleantext)
+    cleantext = cleantext.lower()
+    return cleantext
 
 
 
-df = pd.read_csv('data/JEOPARDY_CSV.csv', encoding='utf-8')
+
+
+df = pd.read_csv('../data/JEOPARDY_CSV.csv', encoding='utf-8')
 
 # Remove the dumb spaces
 df.columns = ['Show Number', 'Air Date', 'Round', 'Category', 'Value', 'Question', 'Answer']
@@ -65,7 +85,6 @@ stemmer = SnowballStemmer("english")
 
 questions = df['Question'].values
 
-#not super pythonic, no, not at all.
 #use extend so it's a big flat list of vocab
 totalvocab_stemmed = []
 totalvocab_tokenized = []
@@ -83,7 +102,7 @@ vocab_frame = pd.DataFrame({'words': totalvocab_tokenized}, index = totalvocab_s
 #                                  min_df=0.2, stop_words='english',
 #                                  use_idf=True, tokenizer=tokenize_and_stem, ngram_range=(1,3))
 
-tfidf_vectorizer = TfidfVectorizer(stop_words='english',
+tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_features=100000, 
                                  tokenizer=tokenize_and_stem, ngram_range=(1,3))
 
 # %time tfidf_matrix = tfidf_vectorizer.fit_transform(questions)
