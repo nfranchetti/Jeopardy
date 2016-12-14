@@ -1,4 +1,3 @@
-from __future__ import print_function
 import pandas as pd
 import numpy as np
 import nltk
@@ -8,7 +7,6 @@ from nltk.stem.snowball import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.externals import joblib
 from sklearn.cluster import KMeans
-from sklearn.externals import joblib
 
 
 # here I define a tokenizer and stemmer which returns the set of stems in the text that it is passed
