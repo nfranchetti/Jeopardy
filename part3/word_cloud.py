@@ -1,9 +1,4 @@
 #!/usr/bin/env python
-"""
-Using custom colors
-====================
-Using the recolor method and custom coloring functions.
-"""
 
 import numpy as np
 from PIL import Image
@@ -19,28 +14,15 @@ def grey_color_func(word, font_size, position, orientation, random_state=None, *
 
 d = path.dirname(__file__)
 
-# read the mask image
-# taken from
-# http://www.stencilry.org/stencils/movies/star%20wars/storm-trooper.gif
-mask = np.array(Image.open(path.join(d, "j.jpg")))
+mask = np.array(Image.open(path.join(d, "trebek.jpg")))
 
-# movie script of "a new hope"
-# http://www.imsdb.com/scripts/Star-Wars-A-New-Hope.html
-# May the lawyers deem this fair use.
 text = open("answers.txt").read()
 
-# preprocessing the text a little bit
-# text = text.replace("HAN", "Han")
-# text = text.replace("LUKE'S", "Luke")
-
-# adding movie script specific stopwords
 stopwords = set(STOPWORDS)
-# stopwords.add("int")
-# stopwords.add("ext")
 
 wc = WordCloud(max_words=1000, mask=mask, stopwords=stopwords, margin=10,
                random_state=1).generate(text)
-# store default colored image
+
 default_colors = wc.to_array()
 plt.title("Custom colors")
 plt.imshow(wc.recolor(color_func=grey_color_func, random_state=3))
